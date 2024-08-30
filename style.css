@@ -1,0 +1,255 @@
+/* reset css */
+
+* {
+    min-width: 0;
+    font: inherit;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  img,
+  video,
+  svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100dvh;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  
+  /* styles */
+  /* TODO: Cambiar la fuente
+  
+  * {
+    font-family: comic-sans;
+  } */
+  
+  body {
+    background-color: #fad7df;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container-letter {
+    position: relative;
+  }
+  
+  .cover {
+    position: absolute;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-top: 100px solid #fe3334;
+    border-bottom: 100px solid transparent;
+  
+    /*  */
+    transition: transform .75s;
+    transform-origin: top;
+  }
+  
+  .paper {
+    position: absolute;
+    padding: 1.5rem;
+    line-height: 2rem;
+    right: 5px;
+    /*  */
+    z-index: -1;
+    background: white;
+    width: 390px;
+    height: 180px;
+  
+    transition: all .75s;
+  }
+  
+  .letter {
+    border-left: 200px solid #ff989e;
+    border-right: 200px solid #ff989e;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid #ff858a;
+  }
+  
+  .options {
+    display: flex;
+    gap: 5rem;
+  
+    & button {
+      color: #ff3234;
+      font-weight: 600;
+      border-radius: 3px;
+      background: #fad7df;
+      padding: 0.5rem 1rem;
+      border: 1px solid #fe3334;
+      cursor: pointer;
+    }
+  
+    & button:hover {
+      background: #ff989e;
+      color: white;
+    }
+  }
+  
+  .open-cover {
+    transform: rotatex(180deg);
+  }
+  
+  .open-paper {
+    animation: openPaper .5s forwards;
+  }
+  
+  @keyframes openPaper {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -120px;
+    }
+  }
+  
+  .close-paper {
+    animation: closePaper .5s forwards;
+  }
+  
+  @keyframes closePaper {
+    0% {
+      top: -120px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  
+  
+  .heart {
+    position: absolute;
+    display: none; /* Ocultos inicialmente */
+    font-size: 3rem;
+    color: #fe3334;
+    animation: crecer 1s forwards;
+}
+
+@keyframes crecer {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+ /* Botón en forma de corazón */
+/* Botón en forma de corazón */
+.heart-button {
+    display: none; /* Ocultar el botón inicialmente */
+    --size: 150px; /* Tamaño del corazón */
+    --color: #fe3334; /* Color del corazón */
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    transform: rotate(45deg);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    animation: beat 1s infinite alternate ease-in-out;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    margin-top: 50px; /* Ajuste para bajar el botón */
+}
+
+
+/* Partes del corazón antes y después para formar la parte superior */
+.heart-button::before,
+.heart-button::after {
+    content: '';
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    border-radius: 50%;
+    transition: inherit; /* Asegurar que los efectos de transición se apliquen */
+}
+
+.heart-button::before {
+    top: -50%;
+    left: 0;
+}
+
+.heart-button::after {
+    top: 0;
+    left: -50%;
+}
+
+/* Texto dentro del botón de corazón */
+.heart-button span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg); /* Rotar el texto en sentido contrario */
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1; /* Asegurar que el texto esté por encima del fondo */
+}
+
+@keyframes beat {
+    to {
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+.heart-button:hover,
+.heart-button::before:hover,
+.heart-button::after:hover {
+    background-color: #ff6f74; /* Color al pasar el ratón */
+    transform: rotate(45deg) scale(1.05);
+}
+
+.heart-button:active,
+.heart-button::before:active,
+.heart-button::after:active {
+    transform: rotate(45deg) scale(1.2); /* Escala al hacer clic */
+    animation: none; /* Pausar animación al hacer clic */
+}
+/* Estilo para el contenedor del video */
+.video-container {
+    position: relative;
+    width: 80%; /* Ajusta el tamaño según lo necesites */
+    max-width: 800px; /* Ajusta el tamaño máximo según lo necesites */
+    margin: 20px 0; /* Margen alrededor del contenedor del video */
+}
+
+/* Estilo para el iframe */
+.video-container iframe {
+    width: 100%;
+    height: 450px; /* Ajusta la altura según lo necesites */
+    border: none;
+}

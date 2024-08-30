@@ -1,0 +1,121 @@
+/* Asegúrate de que el fondo cubra toda la página */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('fondo.png') no-repeat center center fixed;
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    height: 100vh; /* Asegura que el cuerpo tenga al menos el 100% del alto de la vista */
+    width: 100vw; /* Asegura que el cuerpo tenga al menos el 100% del ancho de la vista */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.video-container {
+    position: relative;
+    width: 50%; /* Ajusta el tamaño al 50% del ancho del contenedor padre */
+    max-width: 400px; /* Ajusta el tamaño máximo a la mitad de 800px (400px) */
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+    margin-bottom: 20px;
+    padding-bottom: 100px;
+}
+
+/* Estilo para el iframe del video */
+.video-container iframe {
+    width: 100%;
+    height: 225px; /* Ajusta la altura proporcionalmente a la nueva anchura */
+    border: none;
+}
+
+/* Botón para volver a la página anterior */
+button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #fe3334;
+    z-index: 10;
+}
+
+button:hover {
+    color: #ff6f74; /* Cambia el color al pasar el ratón */
+}
+
+
+/* Estilo para el botón en forma de corazón */
+.heart-button-small {
+    position: absolute;
+    top: 20px; /* Ajusta la distancia desde el borde superior */
+    left: 20px; /* Ajusta la distancia desde el borde izquierdo */
+    --size: 50px; /* Tamaño del corazón pequeño */
+    --color: #fe3334; /* Color del corazón */
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    transform: rotate(45deg);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    animation: beat 1s infinite alternate ease-in-out;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Partes del corazón antes y después para formar la parte superior */
+.heart-button-small::before,
+.heart-button-small::after {
+    content: '';
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    border-radius: 50%;
+}
+
+.heart-button-small::before {
+    top: -50%;
+    left: 0;
+}
+
+.heart-button-small::after {
+    top: 0;
+    left: -50%;
+}
+
+/* Texto dentro del botón de corazón */
+.heart-button-small span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1;
+}
+
+@keyframes beat {
+    to {
+        transform: rotate(45deg) scale(1.1);
+    }
+}
+
+.heart-button-small:hover,
+.heart-button-small::before:hover,
+.heart-button-small::after:hover {
+    background-color: #ff6f74;
+    transform: rotate(45deg) scale(1.05);
+}
+
+.heart-button-small:active,
+.heart-button-small::before:active,
+.heart-button-small::after:active {
+    transform: rotate(45deg) scale(1.2);
+    animation: none;
+}
