@@ -14,7 +14,7 @@ body {
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
     body {
-        background: #b9fab9; /* Color verde claro */
+        background: url('img2.jpg') no-repeat center center fixed; /* Nueva imagen de fondo */
         background-size: cover;
     }
 }
